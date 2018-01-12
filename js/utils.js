@@ -1,5 +1,5 @@
 const config = {
-    url: 'http://192.168.71.203:3000'
+    url: 'http://weidao.herokuapp.com'
 };
 
 
