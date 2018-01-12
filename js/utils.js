@@ -1,6 +1,6 @@
 const config = {
-    // url: 'https://weidao.herokuapp.com' 
-    url: 'http://192.168.71.203:3000' 
+    url: 'https://weidao.herokuapp.com' 
+    // url: 'http://192.168.71.203:3000' 
 
 };
 
