@@ -30,3 +30,14 @@ function getProjectById(proId) {
     });
     return p;
 }
+
+
+// 获取热销商品
+function getHotProject(){
+    var p = new Promise(function(resolve, reject) {
+        getProjects(' sales desc', 4, 0).then((data) => {
+            resolve(data);
+        })
+    })
+    return p;
+}

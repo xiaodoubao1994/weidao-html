@@ -132,3 +132,47 @@
 .shadow{width: 177px;height: 177px;position: absolute;top: 0;left: 0;background-color: rgba(0,0,0,0.4);display: none;}
 /*# sourceMappingURL=product.css.map */
 	
+
+/*// 热销商品*/
+.hot-container {
+  width: 230px;
+  background-color: #fff;
+  font-size: 12px;
+}
+.hot-header {
+  text-indent: 20px;
+  height: 60px;
+  color: #191919;
+  font-weight: bold;
+  line-height: 60px;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+.hot-pros {
+  padding: 0 15px;
+}
+.hot-pro {border-bottom: 1px solid #ddd; height: 92px;}
+.hot-pro img {
+  width: 80px;
+}
+.hot-pro .pro-info {
+  padding-top: 15px;
+  width: 120px;
+}
+.hot-pro .pro-info div{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hot-pro .pro-name {
+  color: #191919;
+}
+.hot-pro .pro-desc {
+  color: #a0a0a0;
+}
+.hot-pro .pro-price {
+  color: #fb104e;
+}
+.hot-pro .sales {
+  color: #777;
+}

@@ -44,10 +44,64 @@
 
     var productContainer = $('.product-container');
     var proId = window.location.search.replace('?id=', "");
-    getProjectById(proId).then((data) => {
+
+
+    var hotHtml = `
+        <div class="hot-container fl">
+            <div class="hot-header">
+                热销人气商品
+            </div>
+
+            
+
+    `;
+
+    
+
+    function loadHot() {
+        var p = new Promise(function(resolve, reject) {
+            getHotProject().then(result => {
+        // console.log(result)
+                for (var i = 0; i < result.length; i++) {
+                    var item = result[i];
+                    var proId = item["id"],
+                        proName = item["proname"],
+                        proDesc = item["prodesc"],
+                        proSales = item["sales"],
+                        newPrice = item["new_price"],
+                        proImage = item["img"];
+                    hotHtml += `
+                        <div class="hot-pros">
+                            <div class="hot-pro clearfix">
+                                <a href="product.html?id=${proId}">
+                                    <img src="${proImage}" class="fl" alt="" />
+                                </a>                    
+                                <div class="pro-info fl">
+                                    <div class="pro-name">${proName}</div>
+                                    <div class="pro-desc">${proDesc}</div>
+                                    <div class="pro-price">
+                                        ¥${newPrice} &nbsp;&nbsp;
+                                        <span class=sales>销量: ${proSales}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }
+                hotHtml += "</div>";
+                resolve();
+            });
+        });
+        return p;
+    }
+
+    loadHot().then(function(){
+
+        getProjectById(proId).then((data) => {
         var proId = data["id"],
             proName = data["proname"],
             proDesc = data["prodesc"],
+            proSales = data["sales"],
             newPrice = data["new_price"],
             oldPrice = data["old_price"],
             proImage = data["img"],
@@ -114,13 +168,14 @@
                         <span class="count-add" style="cursor: pointer;" onclick="myAdd()">+</span>
                     </div>
                     <div class="buy-btns clearfix">
-                        <button id="btn-buy">立即购买</button>
+                        <button id="btn-buy" onclick="handleBuy()">立即购买</button>
                         <button id="btn-cart" onclick="handleCart()">加入购物车</button>
                     </div>
                     <div class="pro-tips">
                         温馨提示：该产品不支持7天无理由退款
                     </div>
                 </div>
+                ${hotHtml}
             </div>
         `
         productContainer.html(html);
@@ -132,6 +187,9 @@
 		})
         
         //放大镜
+
+
+    });
 
 $(".medium-div").on("mousemove",function(e){
 	$(".shadow").css("display","block");
@@ -184,10 +242,18 @@ $(".medium-div").on("mouseout",function(e){
 
  
     
+    // 加入购物车
     function handleCart(){
         var numSpan = $('.count-num');
         var num = parseInt(numSpan.html());
         addPro(proId, num);
+    }
+    // 立即购买
+    function handleBuy(){
+        var numSpan = $('.count-num');
+        var num = parseInt(numSpan.html());
+        addPro(proId, num);
+        window.location.href = "cart.html"
     }
     
     function myAdd() {
@@ -206,6 +272,7 @@ $(".medium-div").on("mouseout",function(e){
         }
     }
 
+  
 
 </script>
 
