@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>产品列表</title>
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="../css/productlist.css">
+    
+    <link rel="stylesheet" type="text/css" href="../lib/css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="../lib/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+    <div class="header-div">
+    </div>
+
+    <div class="product-list container">
+        <div class="list-header clearfix">
+            <div class="header-left fl">
+                <a href="#">味道商城</a>
+                <img src="../images/icon-arr-r.png">
+                <a href="#">商品分类</a>
+                <img src="../images/icon-arr-r.png">
+                <span>源自天然牧场</span>
+            </div>
+            <div class="header-right fr">
+                <span>排序：</span>
+                <span id="sort-price" class="sort-btn">
+                    <a href="#">价格排序</a>
+                </span>
+                <span id="sort-sales" class="sort-btn">
+                    <a href="#" id="sort-sales">销量排序</a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="list-content clearfix">
+            
+        </div>
+    </div> 
+    
+    <div id="page-div" class="page"></div>
+
+    <div class="bottom">
+    </div>
+</body>
+<script type="text/javascript" src="../lib/js/jquery.js"></script>
+<script type="text/javascript" src="../lib/js/swiper.js"></script>
+<script type="text/javascript" src="../lib/js/sweetalert.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script type="text/javascript" src="../js/cart.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/products.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+
+<script type="text/javascript">
+    $('.header-div').load('layouts/header.html', function(){
+        $.getScript('../js/common.js');
+        $.getScript('../js/users.js');
+        showCartNumber();
+    });
+    $('.bottom').load('layouts/footer.html'); 
+    
+    var proCount = "";
+    var sort = "";
+    var limit = 10;
+    var offset = 0;
+    var listContent = $('.list-content');
+    
+    
+
+    getProjects('', 10000, offset).then((data) => {
+        proCount = data.length;
+        Page('#page-div').page({
+            count: proCount,
+            callback: function(pageIndex) {
+                offset = (parseInt(pageIndex) - 1) * limit
+                getData(sort, limit, offset);
+            }
+        });
+        getData(sort, limit, offset);
+    })
+    
+
+    function getData(sort, limit, offset) {
+        getProjects(sort, limit, offset).then((data) => {
+            var html = "";
+            proCount = data.length;
+            listContent.html("");
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var proId = item["id"];
+                // console.log(proId);
+                var proName = item["proname"];
+                var proDesc = item["prodesc"];
+                var newPrice = item["new_price"];
+                var oldPrice = item["old_price"];
+                var proImage = item["img"];
+                var proSales = item["sales"];
+                html += `
+                    <div class="list-item">
+                        <a href="product.html?id=${proId}">
+                            <img src="${proImage}">
+                            <h3 class="list-name">${proName}</h3>
+                            <h4 class="list-desc">${proDesc}</h4>
+                        </a>
+
+                        <div class="item-prices">
+                            <span class="item-price-new">¥${newPrice}</span>
+                            <span class="item-price-old">¥${oldPrice}</span>
+
+                            <span>销量</span>
+                            <span class="item-sales-num">${proSales}</span>
+                        </div>
+                            
+                        <a class="btn-buy my-btn-add" onclick="addPro(${proId}, 1)"></a>
+                    </div>
+                `
+            }
+            listContent.html(html);
+        })
+    }
+    
+    
+    // 排序
+    $('#sort-price').click(function() {
+        sort = "new_price";
+        $(this).addClass('selected').siblings().removeClass('selected');
+        getData(sort, limit, offset);
+    })
+    $('#sort-sales').click(function() {
+        sort = "sales";
+        $(this).addClass('selected').siblings().removeClass('selected');
+        getData(sort, limit, offset);
+    })
+    
+    
+
+</script>
+</html>

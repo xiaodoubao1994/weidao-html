@@ -1,0 +1,130 @@
+<div class="header">
+    <div class="container clearfix">
+        <a href="index.html"><h1 id="logo" class="fl"></h1></a>
+        <ul class="header-right clearfix">
+            <li>
+                <a href="#" class="btn-search">
+                    <img src="../images/icon-search.png" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="cart.html" class="btn-cart">
+                    <img src="../images/icon-cart.png">
+                    <div class="cart-number">
+                        1
+                    </div>
+                </a>
+            </li>
+            <li class="user-li" id="userinfo">
+                <a href="#" class="a-login">登录</a>
+                <a href="#" class="a-signup">注册</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--   main nav   -->
+<div class="top-2">
+    <div class="container main-wrap">
+        <ul class="main-nav clearfix">
+            <li>
+                <a href="index.html">商城首页</a>
+            </li>
+            <li class="fenlei">
+                <a href="#">味道分类</a>
+            </li>
+            <li>
+                <a href="#">味道标准</a>
+            </li>
+            <li>
+                <a href="#">寻味之旅</a>
+            </li>
+            <li>
+                <a href="#">兑换专区</a>
+            </li>
+        </ul>
+        
+        <div class="bottom-line">
+            <div class="active-line"></div>
+        </div>
+
+        <ul class="level-2">
+            <li>
+                <img src="../images/1.png">
+            </li>
+            <li>
+                <img src="../images/2.png">
+            </li>
+            <li>
+                <img src="../images/3.png">
+            </li>
+            <li>
+                <img src="../images/4.png">
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- login modal -->
+<div id="login-modal" class="modal my-modal ">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+        <div class="box login-box" id="login-box">
+            <h2>登录</h2>
+            <div class="input-wrap">
+                <input type="text" placeholder="用户名/邮箱" id="login-username">
+            </div>
+            <div class="input-wrap">
+                <input type="text" placeholder="请输入密码" id="login-userpwd">
+            </div>
+            <div class="input-wrap">
+                <a id="btn-login" class="button is-primary ">登录</a>
+                <a href="#" class="a-signup">
+                    还没账号？点击注册
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+<!-- login end   -->
+
+
+<!-- signup modal -->
+<div id="signup-modal" class="my-modal modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+        <div class="box login-box" id="signup-box">
+            <h2>注册</h2>
+            <div class="input-wrap">
+                <input type="email" placeholder="请输入邮箱" id="signup-email"><span></span>
+            </div>
+            <div class="input-wrap">
+                <input type="text" placeholder="请输入用户名" id="signup-username"><span></span>
+            </div>
+            <div class="input-wrap">
+                <input type="text" placeholder="请输入密码" id="signup-userpwd"><span></span>
+            </div>
+            <div class="input-wrap">
+                <input type="text" placeholder="验证码" id="signup-code">
+                <div class="signup-code-text">
+                    1234
+                </div>
+                <span></span>
+            </div>
+            
+            <div class="input-wrap">
+                <a id="btn-signup" class="button is-primary ">注册</a>
+                <a href="#" class="a-login">
+                    已有账号？点击登录
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+        <!-- signup end   -->

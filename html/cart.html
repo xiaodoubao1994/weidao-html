@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="../css/cart.css">
+    <link rel="stylesheet" type="text/css" href="../lib/css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="../lib/css/bulma.css">
+</head>
+<body>
+    <div class="header-div">
+        
+    </div>
+    
+    <div class="container cart-container">
+        <div class="cart-title clearfix">
+            <h2>购物车</h2>
+            <span>> 我的购物车</span>
+        </div>
+        <div class="cart-header clearfix">
+            <div class="d1">
+                <input type="checkbox" id="check-all">
+                <span>全选</span>
+            </div>
+            <div class="d2">商品</div>
+            <div class="d3">单价（元）</div>
+            <div class="d4">数量</div>
+            <div class="d5">小计（元）</div>
+            <div class="d6">操作</div>
+        </div>
+        <div class="cart-content">
+            
+        </div>
+        <div class="cart-footer">
+            <div class="total-sum-div fl">
+                已选择
+                <span class="total-sum"> </span>
+                件商品
+            </div>
+            <button class="btn-pay fr">
+                立即结算
+            </button>
+            <div class="total-price-div fr">
+                商品金额
+                <span class="total-price">¥139.00</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+    </div>
+</body>
+<script type="text/javascript" src="../lib/js/jquery.js"></script>
+<script type="text/javascript" src="../lib/js/swiper.js"></script>
+<script type="text/javascript" src="../lib/js/sweetalert.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/cart.js"></script>
+
+<script type="text/javascript">
+    $('.header-div').load('layouts/header.html', function(){
+        $.getScript('../js/common.js');
+        $.getScript('../js/users.js');
+        showCartNumber();
+    });
+    
+    $('.bottom').load('layouts/footer.html'); 
+
+    var cartContent = $('.cart-content');
+    var html = "";
+    if (currentUserId) {  // 生成数据
+        getCartItems().then(data => {
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var itemId = item["id"];
+                var proId = item["product_id"];
+                var proName = item["product_name"];
+                var proDesc = item["product_desc"];
+                var newPrice = item["new_price"];
+                var oldPrice = item["old_price"];
+                var proCount = item["count"];
+                var img = item["img"];
+                // console.log(item)
+                html += `
+                    <div class="cart-item clearfix">
+                        <div class="d1">
+                            <input type="checkbox" onclick="showTotal()" checked>
+                            <img src="${img}">
+                        </div>
+                        <div class="d2">${proName}</div>
+                        <div class="d3">${newPrice}</div>
+                        <div class="d4">
+                            <span class="p-s pro-reduce" onclick="handleReduce(${proId},this)">-</span>
+                            <span class="pro-num">${proCount}</span>
+                            <span class="p-s pro-add" onclick="handleAdd(${proId}, this)">+</span>
+                        </div>
+                        <div class="d5">${parseInt(proCount) * parseInt(newPrice)}</div>
+                        <div class="d6 btn-delete" onclick="handleDelete(${itemId}, null, this)">删除</div>
+                    </div>
+                `
+            }
+            cartContent.html(html);
+            showTotal();
+        }); 
+    } else {
+        getCookieItems(function(data){
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var proId = item["id"];
+                var proName = item["proname"];
+                var proDesc = item["prodesc"];
+                var newPrice = item["new_price"];
+                var oldPrice = item["old_price"];
+                var proCount = item["count"];
+                var img = item["img"];
+                // console.log(item)
+                html += `
+                    <div class="cart-item clearfix">
+                        <div class="d1">
+                            <input type="checkbox" onclick="showTotal()" checked>
+                            <img src="${img}">
+                        </div>
+                        <div class="d2">${proName}</div>
+                        <div class="d3">${newPrice}</div>
+                        <div class="d4">
+                            <span class="p-s pro-reduce" onclick="handleReduce(${proId},this)">-</span>
+                            <span class="pro-num">${proCount}</span>
+                            <span class="p-s pro-add" onclick="handleAdd(${proId}, this)">+</span>
+                        </div>
+                        <div class="d5">${parseInt(proCount) * parseInt(newPrice)}</div>
+                        <div class="d6 btn-delete" onclick="handleDelete('',${proId}, this)">删除</div>
+                    </div>
+                `
+            }
+            cartContent.html(html);
+            showTotal();
+        });
+    }
+        
+    function showTotal() {  // 显示总计数量和总价
+        var checkList = $('.cart-content .d1 input[type=checkbox]');
+        var totalNum = 0;
+        var totalPrice = 0;
+        var allChecked = true;
+        for (var i = 0; i < checkList.length; i++) {
+            var checkbox = checkList[i];
+            if (checkbox.checked) {
+                var parent = $(checkbox).closest('.cart-item');
+                var num = parent.find('.pro-num').html();
+                var price = parent.find('.d3').html();
+                totalNum += parseInt(num);
+                totalPrice += parseInt(price) * parseInt(num);
+            } else {
+                allChecked = false;
+            }
+        }
+        $('#check-all').prop("checked", allChecked);
+        $('.total-sum').html(totalNum);
+        $('.total-price').html(totalPrice);
+    }
+    
+    function handleAdd(proId, obj) {
+        var parent = $(obj).closest('.cart-item');
+        var numSpan = parent.find('.pro-num');
+        var num = parseInt(numSpan.html())
+        num++;
+        addPro(proId, 1);
+        numSpan.html(num);
+        showTotal();
+    }
+    function handleReduce(proId, obj) {
+        var parent = $(obj).closest('.cart-item');
+        var numSpan = parent.find('.pro-num');
+        var num = parseInt(numSpan.html())
+        if (num > 1) {
+            num--;
+            addPro(proId, -1);
+        }
+        numSpan.html(num);
+        showTotal();
+    }
+    function handleDelete(itemId, proId, obj) {
+        var parent = $(obj).closest('.cart-item');
+        deleteCartItem(itemId, proId).then(function() {
+            parent.fadeOut(500, function() {
+                parent.remove();
+                showTotal();
+                showCartNumber();
+            })
+        })
+    }
+
+    $('#check-all').click(function() {
+        var isChecked = this.checked;
+        $('.cart-content .d1 input[type=checkbox]').prop('checked', isChecked);
+        showTotal();
+    })
+    
+
+
+</script>
+</html>

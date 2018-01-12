@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="../css/product.css">
+    <link rel="stylesheet" type="text/css" href="../lib/css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="../lib/css/bulma.css">
+</head>
+<body>
+    <div class="header-div">
+    </div>
+
+    <div class="container product-container">
+        
+    </div>
+
+    <div class="bottom">
+    </div>
+</body>
+<script type="text/javascript" src="../lib/js/jquery.js"></script>
+<script type="text/javascript" src="../lib/js/swiper.js"></script>
+<script type="text/javascript" src="../lib/js/sweetalert.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script type="text/javascript" src="../js/products.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/cart.js"></script>
+<script type="text/javascript" src="../js/users.js"></script>
+<script type="text/javascript">
+
+    
+    $('.header-div').load('layouts/header.html', function(){
+        $.getScript('../js/common.js');
+        $.getScript('../js/users.js');
+        showCartNumber();
+    });
+    
+    $('.bottom').load('layouts/footer.html'); 
+    
+
+    var productContainer = $('.product-container');
+    var proId = window.location.search.replace('?id=', "");
+    getProjectById(proId).then((data) => {
+        var proId = data["id"],
+            proName = data["proname"],
+            proDesc = data["prodesc"],
+            newPrice = data["new_price"],
+            oldPrice = data["old_price"],
+            proImage = data["img"],
+            img_1 = data["img_1"],
+            img_2 = data["img_2"],
+            img_3 = data["img_3"],
+            img_4 = data["img_4"];
+        
+        var html = `
+            <div class="product-header ">
+                <h2>${proName}</h2>
+            </div>
+            <div class="product-detail clearfix">
+                <div class="p-d-l fl">
+                    <div class="medium-div">
+                        <img src="${img_1}" alt="">
+                        <div class="shadow"></div>
+                        <div class="bigPic">
+                        	<img src="${img_1}" alt="" style="width:708px!important;height:708px!important">
+                        </div>
+                    </div>
+                    <div class="small-swiper">
+                        <div class="swiper-container" id="small-swiper">
+                            <div class="btn-prev btn"></div>
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="${img_1}">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="${img_2}">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="${img_3}">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="${img_4}">
+                                </div>
+                            </div>
+                            <div class="btn-next btn"></div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="p-d-m fl">
+                    <div class="spjs">
+                        <span class="black">商品介绍：</span>
+                        ${proDesc}
+                    </div>
+                    <div class="gg">
+                        <span class="black">规格：</span>
+                        <a class="ggs">[1-1.5kg/只]</a>
+                    </div>
+                    <div class="price-div clearfix">
+                        <span class="black fl" >味道价：</span>
+                        <div class="price-new fl">¥${newPrice}</div>
+                        <div class="price-old fl">¥${oldPrice}</div>
+                        <div class="youhui fl">
+                            已优惠 ${parseInt(oldPrice) - parseInt(newPrice)}
+                        </div>
+                    </div>
+                    <div class="pro-count clearfix">
+                        <span class="black">数量：</span>
+                        <span class="count-reduce" style="cursor: pointer;"  onclick="myReduce()">-</span>
+                        <span class="count-num">1</span>
+                        <span class="count-add" style="cursor: pointer;" onclick="myAdd()">+</span>
+                    </div>
+                    <div class="buy-btns clearfix">
+                        <button id="btn-buy">立即购买</button>
+                        <button id="btn-cart" onclick="handleCart()">加入购物车</button>
+                    </div>
+                    <div class="pro-tips">
+                        温馨提示：该产品不支持7天无理由退款
+                    </div>
+                </div>
+            </div>
+        `
+        productContainer.html(html);
+        
+        //点击小图切换图片
+        $(".swiper-slide").click(function(){
+			var src=$(this).children("img").attr("src");
+			$(".medium-div img").attr("src",src);
+		})
+        
+        //放大镜
+
+$(".medium-div").on("mousemove",function(e){
+	$(".shadow").css("display","block");
+	$(".bigPic").css("display","block");
+	var evt=window.event||e;
+	var clientX=evt.clientX;
+	var clientY=evt.clientY;
+	var scrollX=document.documentElement.scrollLeft||document.body.scrollLeft;
+	var scrollY=document.documentElement.scrollTop||document.body.scrollTop;
+	var product=document.getElementsByClassName("product-container")[0];
+	var productLeft=product.offsetLeft;
+	var productTop=product.offsetTop+66;
+//	var middle=document.getElementsByClassName("middle_pic")[0];
+	var middleWidth=parseInt($(".medium-div").css("width"));
+	var middleHeight=parseInt($(".medium-div").css("height"));
+	var zoomWidth=parseInt($(".shadow").css("width"));
+	var zoomHeight=parseInt($(".shadow").css("height"));
+	
+	$(".shadow").css("left",clientX+scrollX-productLeft-zoomWidth/2+"px");
+	$(".shadow").css("top",clientY+scrollY-productTop-zoomHeight/2+"px");
+	$(".bigPic img").css("left",-2*(clientX+scrollX-productLeft-zoomWidth/2)+"px");
+	$(".bigPic img").css("top",-2*(clientY+scrollY-productTop-zoomHeight/2)+"px");
+	if(parseInt($(".shadow").css("left"))<0){
+		$(".shadow").css("left",0);
+		$(".bigPic img").css("left",0);
+	}else if(parseInt($(".shadow").css("left"))>middleWidth-zoomWidth){
+		$(".shadow").css("left",middleWidth-zoomWidth+"px");
+		$(".bigPic img").css("left",-2*(middleWidth-zoomWidth)+"px");
+	}
+	
+	if(parseInt($(".shadow").css("top"))<0){
+		$(".shadow").css("top",0);
+		$(".bigPic img").css("top",0);
+	}else if(parseInt($(".shadow").css("top"))>middleHeight-zoomHeight){
+		$(".shadow").css("top",middleHeight-zoomHeight+"px");
+		$(".bigPic img").css("top",-2*(middleHeight-zoomHeight)+"px");
+	}
+	
+})
+
+
+$(".medium-div").on("mouseout",function(e){
+	$(".shadow").css("display","none");
+	$(".bigPic").css("display","none");
+})
+        
+        
+        
+    });
+
+ 
+    
+    function handleCart(){
+        var numSpan = $('.count-num');
+        var num = parseInt(numSpan.html());
+        addPro(proId, num);
+    }
+    
+    function myAdd() {
+        var numSpan = $('.count-num');
+        var num = parseInt(numSpan.html());
+        num++;
+        numSpan.html(num);
+    }
+
+    function myReduce() {
+        var numSpan = $('.count-num');
+        var num = parseInt(numSpan.html());
+        if (num > 1) {
+            num--;
+            numSpan.html(num);
+        }
+    }
+
+
+</script>
+
+</html>

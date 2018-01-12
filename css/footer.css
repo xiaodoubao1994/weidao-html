@@ -1,0 +1,50 @@
+/* footer  */
+.bottom {
+    background-color: #fff;
+    font-size: 12px;
+    color: #a7a7a7;
+    margin-top: 50px;
+}
+.bottom a {
+    color: #a7a7a7;
+}
+.bottom a:hover {
+    color: ##191919;
+}
+
+.bottom .container {
+    padding: 10px;
+}
+.contact {
+    float: left;
+    width: 250px;
+}
+.contact div {
+    padding-left: 50px;
+}
+.contact .tel {
+    background: url('../images/call.png') left center no-repeat; 
+    background-size: 30px 30px;
+}
+.contact .addr {
+    margin-top: 10px;
+    background: url('../images/address.png') left center no-repeat;
+    background-size: 30px 30px;
+}
+.footer-nav {
+    float: left;
+    margin-left: 100px;
+    line-height: 20px;
+}
+.footer-img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-left: 100px;
+}
+
+.copyright {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}

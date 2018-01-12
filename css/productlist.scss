@@ -1,0 +1,105 @@
+.product-list {
+    .list-header {
+        padding-left: 30px;
+        font-size: 14px;
+        background-color: #fff;
+        height: 60px;
+        border-radius: 5px 5px 0 0;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        line-height: 60px;
+        a {color: #191919;}
+        span {color: #a7a7a7;}
+    }
+    .header-right {
+        padding-right: 50px;
+        span {
+            color: #191919;
+            font-size: 18px;
+            float: left;
+            margin-left: 30px;
+        }
+        a {
+            color: #a7a7a7;
+            display: block;
+            float: left;
+            padding-left: 25px;
+        }
+        
+        #sort-sales a{
+            background: url('../images/sale_unselect.png') left center no-repeat;
+            background-size: 20px 20px;
+            color: #a7a7a7;
+            font-size: 16px;
+
+        }
+        #sort-sales.selected a{
+            background: url('../images/sale_select.png') left center no-repeat;
+            background-size: 20px 20px;
+        }
+        #sort-price a{
+            background: url('../images/price_unselect.png') left center no-repeat;
+            background-size: 20px 20px;
+            color: #a7a7a7;
+            font-size: 16px;
+        }
+        #sort-price.selected a{
+            background: url('../images/price_select.png') left center no-repeat;
+            background-size: 20px 20px;
+        }
+    }
+}
+
+
+.list-content {
+    // display: flex;
+    // justify-content: space-between;
+    // flex-wrap: wrap;
+    margin-right: -10px;
+    .list-item {
+        float: left;
+        margin-right: 10px;
+        position: relative;
+        width: 228px;
+        height: 312px;
+        background-color: #fff;
+        margin-bottom: 10px;
+        img {
+            display:block;
+            width: 195px;
+            margin: 10px auto;
+        }
+        h3, h4 {
+            padding: 0 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        h4 {
+            font-size: 14px;
+            color: #a7a7a7;
+        }
+        .item-prices {
+            margin-top: 10px;
+            .item-price-new {
+                font-size: 14px;
+                color: #fb104e;
+                margin: 0 10px 0 20px;
+            }
+            .item-price-old {
+                font-size: 12px;
+                text-decoration: line-through;
+                color: #C9C9C9;
+            }
+        }
+        .btn-buy {
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
+            width: 35px;
+            height: 37px;
+            background: url('../images/cart_black.png') 0 0 no-repeat;
+            background-size: 35px;
+        }
+    }
+}

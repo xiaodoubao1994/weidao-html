@@ -1,0 +1,87 @@
+h3 {color: #191919;}
+.product-list .list-header {
+  padding-left: 30px;
+  font-size: 14px;
+  background-color: #fff;
+  height: 60px;
+  border-radius: 5px 5px 0 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  line-height: 60px; }
+  .product-list .list-header a {
+    color: #191919; }
+  .product-list .list-header span {
+    color: #a7a7a7; }
+.product-list .header-right {
+  padding-right: 50px; }
+  .product-list .header-right span {
+    color: #191919;
+    font-size: 18px;
+    float: left;
+    margin-left: 30px; }
+  .product-list .header-right a {
+    color: #a7a7a7;
+    display: block;
+    float: left;
+    padding-left: 25px; }
+  .product-list .header-right #sort-sales a {
+    background: url("../images/sale_unselect.png") left center no-repeat;
+    background-size: 20px 20px;
+    color: #a7a7a7;
+    font-size: 16px; }
+  .product-list .header-right #sort-sales.selected a {
+    background: url("../images/sale_select.png") left center no-repeat;
+    background-size: 20px 20px; }
+  .product-list .header-right #sort-price a {
+    background: url("../images/price_unselect.png") left center no-repeat;
+    background-size: 20px 20px;
+    color: #a7a7a7;
+    font-size: 16px; }
+  .product-list .header-right #sort-price.selected a {
+    background: url("../images/price_select.png") left center no-repeat;
+    background-size: 20px 20px; }
+
+.list-content {
+  margin-right: -10px; }
+  .list-content .list-item {
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    width: 228px;
+    height: 312px;
+    background-color: #fff;
+    margin-bottom: 10px; }
+    .list-content .list-item img {
+      display: block;
+      width: 195px;
+      margin: 10px auto; }
+    .list-content .list-item h3, .list-content .list-item h4 {
+      padding: 0 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+    .list-content .list-item h4 {
+      font-size: 14px;
+      color: #a7a7a7; }
+    .list-content .list-item .item-prices {
+      margin-top: 10px; }
+      .list-content .list-item .item-prices .item-price-new {
+        font-size: 14px;
+        color: #fb104e;
+        margin: 0 5px 0 20px; }
+      .list-content .list-item .item-prices .item-price-old {
+        font-size: 12px;
+        text-decoration: line-through;
+        color: #C9C9C9; 
+        margin-right: 20px;
+      }
+    .list-content .list-item .btn-buy {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      width: 35px;
+      height: 37px;
+      background: url("../images/cart_black.png") 0 0 no-repeat;
+      background-size: 35px; }
+
+/*# sourceMappingURL=productlist.css.map */

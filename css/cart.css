@@ -1,0 +1,125 @@
+.cart-title {
+  margin: 20px 22px 28px;
+  height: 56px;
+  padding-left: 20px;
+  background: url("../images/cart-title.png") left center no-repeat;
+  background-size: 8px 30px;
+  line-height: 56px; }
+  .cart-title h2 {
+    float: left;
+    font-weight: 400;
+    font-size: 24px;
+    margin-right: 15px; }
+  .cart-title span {
+    color: #ffd300;
+    font-size: 16px;
+    font-weight: 600; }
+
+.cart-header {
+  background-color: #fff;
+  margin-bottom: 10px;
+  height: 60px;
+  color: #a0a0a0;
+  font-size: 16px;
+  line-height: 60px;
+  border-radius: 5px; }
+  .cart-header div {
+    float: left; }
+
+.d1 {
+  padding-left: 20px;
+  width: 150px; }
+  .d1 span {
+    margin-left: 20px; }
+
+.d2 {
+  width: 355px; }
+
+.d3 {
+  width: 148px; }
+
+.d4 {
+  width: 166px;
+  text-align: center; }
+
+.d5 {
+  width: 180px;
+  text-align: center;
+  color: #fb104e; }
+
+.cart-content {
+  background-color: #fff; }
+
+.d6 {
+  cursor: pointer; }
+
+.cart-item {
+  color: #535353;
+  border: 1px solid #dfdfdf;
+  border-top: 0px;
+  height: 128px;
+  padding: 20px 0;
+  line-height: 88px; }
+  .cart-item div {
+    float: left; }
+  .cart-item .d1 {
+    height: 88px;
+    line-height: 88px; }
+    .cart-item .d1 input {
+      vertical-align: middle; }
+    .cart-item .d1 img {
+      width: 88px;
+      vertical-align: middle; }
+  .cart-item .d2 {
+    line-height: 20px;
+    padding-top: 30px;
+    font-size: 14px;
+    padding-right: 30px; }
+  .cart-item .d4 span {
+    display: inline-block;
+    height: 100%; }
+  .cart-item .d4 .p-s {
+    cursor: pointer;
+    width: 30px;
+    font-size: 30px;
+    line-height: 88px; }
+  .cart-item .d4 .pro-add {
+    font-size: 26px; }
+  .cart-item .d4 .pro-num {
+    width: 40px;
+    font-size: 24px;
+    height: 100%; }
+
+button {
+  cursor: pointer; }
+
+.cart-footer {
+  background-color: #fff;
+  margin-bottom: 60px;
+  overflow: hidden;
+  height: 62px;
+  line-height: 62px;
+  border: 1px solid #dfdfdf;
+  border-top: 0px;
+  border-radius: 0 0 8px 8px; }
+  .cart-footer .total-sum-div {
+    margin-left: 30px;
+    color: #a0a0a0; }
+    .cart-footer .total-sum-div .total-sum {
+      color: #191919;
+      font-size: 18px; }
+  .cart-footer .btn-pay {
+    height: 100%;
+    width: 160px;
+    border: 0;
+    font-size: 28px;
+    color: #fff;
+    background-color: #de0a42; }
+  .cart-footer .total-price-div {
+    margin-right: 40px;
+    margin-left: 10px; }
+    .cart-footer .total-price-div .total-price {
+      font-size: 22px;
+      color: #fb104e; }
+
+/*# sourceMappingURL=cart.css.map */

@@ -1,0 +1,212 @@
+/* --------------- header---------------; */
+
+.top-2 {
+    width: 100%;
+}
+.main-wrap {
+    position: relative;
+}
+
+.level-2 {
+    position: absolute;
+    display: none;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+    height: 100px;
+}
+.level-2 li{
+    float: left;
+    height: 100%;
+    width: 120px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.level-2 img {
+    width: 60px;
+    vertical-align: middle;
+}
+
+
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #191919;
+}
+#logo {
+    margin-top: 10px;
+    padding: 10px 15px 10px 15px;
+    width: 56px;
+    height: 40px;
+    background: url('../images/weidao_logo.png') no-repeat  center;
+    background-size: 56px 40px;
+}
+.header-right {
+    float: right;
+    height: 60px;
+    line-height: 60px;
+}
+.header-right li {
+    float: left;
+    margin-right: 60px;
+    height: 60px;
+}
+.btn-search img{
+    width: 24px;
+    padding-top: 18px;
+}
+.btn-cart {
+    position: relative;
+}
+.btn-cart img {
+    width: 28px;
+    padding-top: 19px;
+}
+.btn-cart .cart-number {
+    position: absolute;
+    display: none;
+    top: -17px;
+    left: 13px;
+    width: 24px;
+    height: 24px;
+    color: #191919;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #ffd300;
+}
+.user-li a, .user-li a:hover {
+    color: #ffd300;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+
+/* --------------- header end--------------- */
+
+/* ------------ login modal ---------------- */
+.my-modal .modal-content {
+    width: 400px;
+}
+.login-box {
+    width: 400px;
+    height: 500px;
+}
+.login-box h2 {
+    font-size: 20px;
+    text-align: center;
+}
+.input-wrap {
+    text-align: center;
+    margin-top: 20px;
+}
+.input-wrap input {
+    vertical-align: middle;
+    border: 1px solid #dcdcdc;
+    outline: none;
+    font-size: 16px;
+    color: #191919;
+    height: 50px;
+    padding: 10px 15px;
+    width: 232px;
+    border-radius: 2px;
+}
+.input-error {
+    border-color: red;
+}
+.my-modal .a-login, .my-modal .a-signup {
+    line-height: 36px;
+}
+
+#signup-code {
+    width: 120px;
+}
+
+.input-wrap {
+    overflow: hidden;
+}
+.input-wrap input {
+    float: left;
+    margin-left: 50px;
+}
+.input-wrap span{
+    float: left;
+    font-size: 16px;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+}
+
+.signup-code-text {
+    float: left;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+    background-color: #bcbcbc;
+    color: white;
+    letter-spacing: 8px;
+    display: inline-block;
+    line-height: 50px;
+    height: 50px;
+    width: 95px;
+    vertical-align: middle;
+}
+
+
+/* -------------- modal end ---------------- */
+
+
+/* -----------main nav ----------- */
+.main-nav {
+    background-color: #fff;
+}
+.main-nav li {
+    float: left;
+    width: 118px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.main-nav li a {
+    color: #353535;
+}
+.bottom-line {
+    height: 4px;
+    background-color: #ddd;
+    position: relative;
+}
+.active-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 4px;
+    width: 118px;
+    background-color: #ffd300;
+}
+/* main slider */
+.main-swiper .swiper-pagination-bullets {
+    position: absolute;
+    width: 200px !important;   
+    left:  1000px !important;
+}
+.main-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #fff !important;
+    opacity: 1;
+}
+.main-swiper .swiper-pagination-bullet-active {
+    background-color: #ffd300 !important;
+}
+.main-swiper {
+    width: 1180px;
+    height: 472px;
+    margin-top: 20px;
+}
+.main-swiper img {
+    width: 100%;
+    height: 100%;
+}
+

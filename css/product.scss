@@ -1,0 +1,131 @@
+.product-header {
+    background-color: #fff;
+    height: 60px;
+    margin: 20px auto 10px auto !important;
+    h2 {
+        font-size: 14px;
+        color: #191919;
+        font-weight: bold;
+        line-height: 60px;
+        margin: 0 12px 0 28px;
+        width: auto;
+    }
+}
+.product-detail {
+    margin-bottom: 30px;
+    .p-d-l {
+        width: 354px;
+        overflow: hidden;
+        .medium-div {
+            height: 354px;
+            width: 354px;
+        }
+        .btn {
+            float: left;
+            width: 28px;
+            height: 74px;
+        }
+        .btn-prev {
+            background: url('../images/icon-slider-left.png') center center no-repeat #eee;
+        }
+        .btn-next {
+            background: url('../images/icon-slider-right.png') center center no-repeat #eee;
+        }
+        .small-swiper {
+            width: 354px;
+            height: 74px;
+            .swiper-wrapper {
+                float: left;
+                width: 298px;
+                overflow: hidden;
+            }
+            .swiper-slide {
+                width: 72px !important;
+                height:72px;
+                border: 1px solid #aaa;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    .p-d-m {
+        width: 574px;
+        height: 428px;
+        margin: 0 10px;
+        padding: 0 80px 0 20px;
+        font-size: 14px;
+        background-color: #fff;
+        div {
+            margin: 30px 0;
+        }
+        .black {
+            font-size: 14px;
+            font-weight: bold;
+            color: #191919;
+        }
+        .spjs {
+            color: #a0a0a0;
+        }
+        .ggs {
+            color: #191919;
+            background-color: #ffd300;
+            padding: 5px;
+            border-radius: 8px;
+        }
+        .price-div {line-height: 28px;}
+        .price-new {
+            margin: 0;
+            color: #fb104e;
+            font-size: 25px;
+            line-height: 28px;
+            font-weight: bold;
+        }
+        .price-old {
+            margin: 0 5px;
+            color: #a0a0a0;
+            font-size: 14px;
+            text-decoration: line-through;
+        }
+        .youhui {
+            margin: 0 5px;
+            font-size: 14px;
+            color: #fb104e;
+        }
+        .pro-count span {
+            float: left;
+            text-align: center;
+            line-height: 22px;
+        }
+        .count-reduce {
+            margin-left: 10px;
+        }
+        .count-reduce, .count-add {
+            border: 1px solid #dbdbdb;
+            width: 22px;
+            height: 22px;
+        }
+        .count-num {
+            border: 1px solid #dbdbdb;
+            border-left: 0px;
+            border-right: 0px;
+            width: 40px;
+            height: 22px;
+        }
+
+        .buy-btns button{
+            background-color: #FE004A;
+            float: left;
+            width: 118px;
+            height: 36px;
+            margin-right: 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
+
