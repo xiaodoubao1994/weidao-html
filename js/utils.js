@@ -1,5 +1,5 @@
 const config = {
-    url: 'http://weidao.herokuapp.com'
+    url: 'https://weidao.herokuapp.com'
 };
 
 
